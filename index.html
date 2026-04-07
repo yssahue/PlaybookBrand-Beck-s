@@ -8,87 +8,51 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  /* BASE PÊCHE */
-  --cream:    #FCEEE6;
-  --linen:    #F8E4D8;
-  --sand:     #EED4BC;
-  --mist:     #E8CCBC;
-
-  /* TEXTE — jamais foncé */
-  --text:     #C08870;
-  --text-mid: #CCA080;
-  --text-lt:  #DDB898;
-
-  /* ROSE / PÊCHE PROFOND — wishlist, header */
-  --rose:     #D8907C;
-  --rose-l:   #ECC8B8;
-  --rose-ll:  #F8E4DC;
-
-  /* AMBRE DORÉ — stats bar, gold accents */
-  --gold:     #CCA060;
-  --gold-l:   #E4C898;
-  --gold-ll:  #F4E4CC;
-
-  /* SAUGE PÂLE — tested, avis Morgane */
-  --olive:    #A8C090;
-  --olive-l:  #CCD8B8;
-  --olive-ll: #E4EED8;
-
-  /* BLUSH — price pills */
-  --blush:    #D4A888;
-  --blush-l:  #E8CDB8;
-  --blush-ll: #F4E4D8;
-
-  /* MENTHE PÂLE — edit mode, save */
-  --sage:     #A0BCA8;
-  --sage-l:   #C4D8C8;
-  --sage-ll:  #DFF0E4;
-
-  /* ABRICOT — type pills */
-  --sky:      #D4A878;
-  --sky-l:    #E8C8A0;
-  --sky-ll:   #F4E4CC;
-
-  /* POUDRÉ LILAS — size pills */
-  --lavender:    #C8B0C0;
-  --lavender-l:  #DDD0D8;
-  --lavender-ll: #F0EAF0;
+  --cream:#FAF7F1;--linen:#F4EEE4;--sand:#E8DECE;--mist:#EDE8DF;
+  --text:#9A7A60;--text-mid:#B89878;--text-lt:#CCAA90;
+  --rose:#D49088;--rose-l:#EEDCD8;--rose-ll:#FAF4F2;
+  --gold:#C8A84C;--gold-l:#EEE0A4;--gold-ll:#FAF6E4;
+  --olive:#A0B470;--olive-l:#D8E4B8;--olive-ll:#EFF5E4;
+  --blush:#D4A888;--blush-l:#EEDDD0;--blush-ll:#FAF3EC;
+  --sage:#A8BCA0;--sage-l:#D8E4D0;--sage-ll:#EEF4EA;
+  --sky:#90AABF;--sky-l:#D0E0EC;--sky-ll:#EEF4FA;
+  --lavender:#B4A0C8;--lavender-l:#DDD4EE;--lavender-ll:#F4F0FA;
 }
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);font-size:14px;line-height:1.6}
 
-/* ── EDIT BAR ── */
-.edit-bar{background:var(--linen);border-bottom:1px solid var(--sand);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;position:sticky;top:0;z-index:200}
-.edit-bar-label{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--rose)}
-.edit-toggle{display:flex;align-items:center;gap:8px;cursor:pointer}
-.toggle-track{width:44px;height:24px;background:var(--sand);border-radius:12px;transition:background 0.2s;flex-shrink:0;position:relative}
-.toggle-track.on{background:var(--rose)}
+/* EDIT MODE BAR */
+.edit-bar{background:var(--sage-ll);border-bottom:1px solid var(--sage-l);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:200}
+.edit-bar-label{font-size:10px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage)}
+.edit-toggle{display:flex;align-items:center;gap:8px}
+.toggle-track{width:44px;height:24px;background:var(--sand);border-radius:12px;cursor:pointer;transition:background 0.2s;flex-shrink:0;position:relative}
+.toggle-track.on{background:var(--sage)}
 .toggle-thumb{width:20px;height:20px;background:#fff;border-radius:50%;position:absolute;top:2px;left:2px;transition:left 0.2s;box-shadow:0 1px 4px rgba(0,0,0,0.12)}
 .toggle-track.on .toggle-thumb{left:22px}
-.toggle-label{font-size:11px;color:var(--text-mid)}
-.add-btn{background:var(--olive-ll);color:var(--olive);border:1px solid var(--olive-l);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:20px;cursor:pointer;display:none}
+.toggle-label{font-size:11px;color:var(--text-mid);font-weight:400}
+.add-btn{background:var(--olive-ll);color:var(--olive);border:1px solid var(--olive-l);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:20px;cursor:pointer;transition:all 0.2s;display:none}
 .add-btn:hover{background:var(--olive-l)}
 body.editing .add-btn{display:block}
 
-/* ── HEADER ── */
-.header{background:linear-gradient(160deg,var(--cream) 0%,var(--linen) 60%,var(--rose-ll) 100%);border-bottom:1px solid var(--rose-l);padding:38px 20px 24px;position:relative;overflow:hidden}
+/* HEADER */
+.header{background:linear-gradient(160deg,var(--rose-ll) 0%,var(--gold-ll) 55%,var(--olive-ll) 100%);border-bottom:1px solid var(--rose-l);padding:40px 20px 26px;position:relative;overflow:hidden}
 .header::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(200,168,76,0.14) 0%,transparent 68%)}
-.hbadge{font-size:8px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.header-badge{font-size:8px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
 .header h1{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--text);line-height:1.05}
 .header h1 em{font-style:italic;color:var(--rose)}
 .header-sub{font-size:11px;color:var(--text-lt);letter-spacing:1.5px;margin-top:5px}
-.header-stats{display:flex;gap:20px;margin-top:14px;padding-top:14px;border-top:1px solid var(--rose-l);flex-wrap:wrap}
+.header-stats{display:flex;gap:18px;margin-top:14px;padding-top:14px;border-top:1px solid var(--rose-l);flex-wrap:wrap}
 .hstat-val{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--blush);line-height:1}
 .hstat-lbl{font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-lt);margin-top:2px}
 
-/* ── SEARCH ── */
+/* SEARCH */
 .search-bar{background:var(--linen);border-bottom:1px solid var(--sand);padding:10px 14px;position:sticky;top:44px;z-index:100}
 .search-inner{display:flex;align-items:center;gap:8px;background:var(--cream);border:1px solid var(--sand);border-radius:10px;padding:8px 14px}
 .search-icon{font-size:13px;opacity:0.4;flex-shrink:0}
 .search-input{border:none;background:transparent;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);width:100%;outline:none}
 .search-input::placeholder{color:var(--text-lt)}
 
-/* ── TABS ── */
+/* TABS */
 .tabs{display:flex;background:var(--linen);border-bottom:1px solid var(--sand);overflow-x:auto;scrollbar-width:none;position:sticky;top:97px;z-index:99}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex-shrink:0;padding:12px 13px 10px;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;color:var(--text-lt);cursor:pointer;border-bottom:2px solid transparent;transition:all 0.2s;white-space:nowrap;display:flex;align-items:center;gap:5px;background:var(--linen)}
@@ -96,7 +60,7 @@ body.editing .add-btn{display:block}
 .tab-count{background:var(--sand);color:var(--text-lt);font-size:8.5px;padding:2px 6px;border-radius:10px}
 .tab.active .tab-count{background:var(--rose-l);color:var(--rose)}
 
-/* ── CAT ── */
+/* CAT */
 .cat-view{display:none;padding:14px 14px 48px;background:var(--cream)}
 .cat-view.active{display:block}
 .cat-header{padding:14px 4px 8px}
@@ -104,58 +68,21 @@ body.editing .add-btn{display:block}
 .cat-title em{font-style:italic;color:var(--blush)}
 .cat-subtitle{font-size:10px;color:var(--text-lt);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
 
-/* ── FILTERS ── */
+/* FILTERS */
 .filters{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:4px 0 12px}
 .filters::-webkit-scrollbar{display:none}
 .filter-pill{flex-shrink:0;border:1px solid var(--sand);background:var(--cream);color:var(--text-mid);font-size:9.5px;letter-spacing:1px;text-transform:uppercase;padding:5px 13px;border-radius:20px;cursor:pointer;transition:all 0.18s}
 .filter-pill.active{background:var(--rose-l);color:var(--rose);border-color:var(--rose-l)}
 
-/* ── BRAND CARDS ── */
+/* BRAND CARDS */
 .brands-list{display:flex;flex-direction:column;gap:10px}
 .brand-card{background:var(--cream);border-radius:14px;overflow:hidden;border:1px solid var(--sand);transition:box-shadow 0.2s}
 .brand-card:hover{box-shadow:0 4px 18px rgba(168,144,108,0.1)}
-.brand-card.hidden-card{opacity:0.4;border-style:dashed}
-
-/* card photo */
-.card-photo{width:100%;height:160px;object-fit:cover;display:block}
-.card-photo-placeholder{width:100%;height:100px;background:var(--linen);display:flex;align-items:center;justify-content:center;color:var(--text-lt);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-bottom:1px solid var(--sand);display:none}
-.card-photo-placeholder:hover{background:var(--sand)}
-body.editing .card-photo-placeholder{display:flex}
-.card-photo-input{display:none}
-
-/* card head */
-.brand-head{padding:14px 16px;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;background:var(--cream)}
-.brand-left{flex:1;min-width:0;cursor:pointer}
+.brand-head{padding:14px 16px;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;background:var(--cream)}
+.brand-left{flex:1;min-width:0}
 .brand-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--text);line-height:1.1;margin-bottom:5px}
 .brand-name em{font-style:italic;color:var(--blush)}
 .brand-meta{display:flex;flex-wrap:wrap;gap:5px}
-
-/* head actions */
-.head-actions{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex-shrink:0}
-.brand-chevron{font-size:11px;color:var(--text-lt);transition:transform 0.25s;cursor:pointer}
-.brand-card.open .brand-chevron{transform:rotate(180deg)}
-
-/* wishlist quick btn */
-.wish-btn{background:none;border:none;font-size:16px;cursor:pointer;line-height:1;padding:0;opacity:0.5;transition:opacity 0.18s,transform 0.18s}
-.wish-btn:hover{opacity:1;transform:scale(1.2)}
-.wish-btn.active{opacity:1}
-
-/* edit actions (edit mode only) */
-.card-edit-actions{display:none;padding:8px 16px;gap:8px;background:var(--cream);border-top:1px solid var(--mist)}
-body.editing .card-edit-actions{display:flex;flex-wrap:wrap}
-.card-action-btn{flex:1;min-width:100px;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:8px 10px;border-radius:8px;cursor:pointer;border:1px solid;text-align:center;transition:all 0.18s}
-.btn-edit{background:var(--sage-ll);color:var(--sage);border-color:var(--sage-l)}
-.btn-edit:hover{background:var(--sage-l)}
-.btn-hide{background:var(--gold-ll);color:var(--gold);border-color:var(--gold-l)}
-.btn-hide:hover{background:var(--gold-l)}
-.btn-delete{background:var(--rose-ll);color:var(--rose);border-color:var(--rose-l)}
-.btn-delete:hover{background:var(--rose-l)}
-.btn-photo{background:var(--sky-ll);color:var(--sky);border-color:var(--sky-l)}
-.btn-photo:hover{background:var(--sky-l)}
-.btn-photo-del{background:var(--blush-ll);color:var(--blush);border-color:var(--blush-l)}
-.btn-photo-del:hover{background:var(--blush-l)}
-
-/* pills */
 .pill{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:20px;font-size:8.5px;font-weight:500;letter-spacing:0.8px;text-transform:uppercase}
 .pill-tested{background:var(--sage-l);color:var(--sage)}
 .pill-wishlist{background:var(--rose-l);color:var(--rose)}
@@ -165,11 +92,17 @@ body.editing .card-edit-actions{display:flex;flex-wrap:wrap}
 .pill-size{background:var(--lavender-ll);color:var(--lavender)}
 .pill-eco{background:var(--olive-ll);color:var(--olive)}
 .pill-mif{background:var(--sky-ll);color:var(--sky)}
-.pill-hidden{background:var(--sand);color:var(--text-lt)}
-
-/* body */
+.brand-chevron{font-size:11px;color:var(--text-lt);transition:transform 0.25s;flex-shrink:0;margin-top:4px}
+.brand-card.open .brand-chevron{transform:rotate(180deg)}
 .brand-body{display:none;border-top:1px solid var(--mist)}
 .brand-card.open .brand-body{display:block}
+
+/* EDIT BTN (shown in edit mode) */
+.edit-card-btn{display:none;margin:10px 16px 0;background:var(--sage-ll);color:var(--sage);border:1px solid var(--sage-l);font-family:'DM Sans',sans-serif;font-size:10px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:8px;cursor:pointer;width:calc(100% - 32px)}
+.edit-card-btn:hover{background:var(--sage-l)}
+body.editing .edit-card-btn{display:block}
+
+/* FIELDS */
 .fields-grid{display:grid;grid-template-columns:1fr 1fr;background:var(--linen)}
 .field{padding:12px 16px;background:var(--linen);border-right:1px solid var(--sand);border-bottom:1px solid var(--sand)}
 .field:nth-child(2n){border-right:none}
@@ -178,75 +111,75 @@ body.editing .card-edit-actions{display:flex;flex-wrap:wrap}
 .field-value{font-size:12px;color:var(--text);font-weight:400;line-height:1.5}
 .field-value.empty{color:var(--text-lt);font-style:italic}
 .field-value a{color:var(--olive);text-decoration:none;border-bottom:1px solid var(--olive-l);font-weight:500}
+
+/* AVIS */
 .avis-block{padding:12px 16px;background:var(--sage-ll);border-bottom:1px solid var(--sand);display:flex;gap:10px;align-items:flex-start}
 .avis-avatar{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;font-family:'Cormorant Garamond',serif;background:var(--sage-l);color:var(--sage)}
 .avis-name{font-size:8.5px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--sage);margin-bottom:3px}
 .avis-text{font-size:12px;color:var(--text-mid);font-weight:300;line-height:1.55;font-style:italic}
 .avis-text.empty{color:var(--text-lt)}
+
+/* CARD FOOTER */
 .brand-footer{padding:10px 16px;background:var(--gold-ll);display:flex;align-items:center;gap:7px}
 .brand-footer-icon{font-size:12px;opacity:0.5}
 .brand-footer-text{font-size:11px;color:var(--text-lt);font-style:italic}
 .brand-footer-text a{color:var(--gold);font-style:normal;font-weight:500;text-decoration:none}
 
-/* no result */
+/* NO RESULT */
 .no-result{display:none;text-align:center;padding:36px 20px}
 .no-result.visible{display:block}
 .no-result p{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:300;color:var(--text-mid)}
 
-/* ══ MODAL (edit) ══ */
-.overlay{display:none;position:fixed;inset:0;background:rgba(154,122,96,0.3);backdrop-filter:blur(3px);z-index:500;align-items:flex-end}
-.overlay.open{display:flex}
+/* ══ EDIT MODAL ══ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(154,122,96,0.3);backdrop-filter:blur(3px);z-index:500;align-items:flex-end}
+.modal-overlay.open{display:flex}
 .modal{background:var(--cream);border-radius:20px 20px 0 0;width:100%;max-height:88vh;overflow-y:auto;padding:0 0 32px}
-.modal-hdr{padding:18px 20px 14px;border-bottom:1px solid var(--sand);position:sticky;top:0;background:var(--cream);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.modal-title{font-family:'Cormorant Garamond',serif;font-size:21px;font-weight:300;color:var(--text)}
+.modal-header{padding:20px 20px 14px;border-bottom:1px solid var(--sand);position:sticky;top:0;background:var(--cream);z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--text)}
 .modal-title em{font-style:italic;color:var(--rose)}
-.modal-close{background:var(--sand);border:none;color:var(--text-mid);font-size:14px;width:30px;height:30px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.modal-close{background:var(--sand);border:none;color:var(--text-mid);font-size:14px;width:30px;height:30px;border-radius:50%;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .modal-body{padding:16px 20px;display:flex;flex-direction:column;gap:14px}
-.fg{display:flex;flex-direction:column;gap:5px}
-.fl{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-lt)}
-.fi,.fs,.ft{background:var(--linen);border:1px solid var(--sand);border-radius:10px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);outline:none;width:100%;-webkit-appearance:none}
-.fi:focus,.fs:focus,.ft:focus{border-color:var(--rose-l)}
-.ft{min-height:80px;resize:vertical;line-height:1.5}
-.fr2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* FORM FIELDS */
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-label{font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-lt)}
+.form-input,.form-select,.form-textarea{background:var(--linen);border:1px solid var(--sand);border-radius:10px;padding:10px 14px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--text);outline:none;width:100%;transition:border-color 0.18s;-webkit-appearance:none}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--rose-l)}
+.form-textarea{min-height:80px;resize:vertical;line-height:1.5}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .form-actions{display:flex;gap:10px;padding:16px 20px 0;border-top:1px solid var(--sand)}
-.btn-save{flex:1;background:var(--sage);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px;border-radius:10px;cursor:pointer}
+.btn-save{flex:1;background:var(--sage);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px;border-radius:10px;cursor:pointer;transition:opacity 0.2s}
+.btn-save:hover{opacity:0.85}
 .btn-cancel{background:var(--sand);color:var(--text-mid);border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:12px 18px;border-radius:10px;cursor:pointer}
 
-/* ══ CONFIRM DIALOG ══ */
-.confirm-overlay{display:none;position:fixed;inset:0;background:rgba(154,122,96,0.4);backdrop-filter:blur(4px);z-index:600;align-items:center;justify-content:center;padding:20px}
-.confirm-overlay.open{display:flex}
-.confirm-box{background:var(--cream);border-radius:16px;padding:24px 20px;max-width:320px;width:100%;text-align:center}
-.confirm-emoji{font-size:32px;margin-bottom:12px}
-.confirm-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:300;color:var(--text);margin-bottom:8px}
-.confirm-sub{font-size:12px;color:var(--text-lt);font-weight:300;margin-bottom:20px;line-height:1.5}
-.confirm-btns{display:flex;gap:10px}
-.conf-cancel{flex:1;background:var(--sand);color:var(--text-mid);border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:11px;border-radius:10px;cursor:pointer}
-.conf-ok{flex:1;background:var(--rose);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;letter-spacing:1px;text-transform:uppercase;padding:11px;border-radius:10px;cursor:pointer}
+/* ══ ADD MODAL ══ */
+.add-modal-overlay{display:none;position:fixed;inset:0;background:rgba(154,122,96,0.3);backdrop-filter:blur(3px);z-index:500;align-items:flex-end}
+.add-modal-overlay.open{display:flex}
 
-/* page footer */
+/* PAGE FOOTER */
 .page-footer{background:var(--linen);border-top:1px solid var(--sand);padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.pfl{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--text-mid)}
-.pfl em{font-style:italic;color:var(--rose)}
-.pfr{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-lt)}
+.page-footer-left{font-family:'Cormorant Garamond',serif;font-size:16px;font-weight:300;color:var(--text-mid)}
+.page-footer-left em{font-style:italic;color:var(--rose)}
+.page-footer-right{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--text-lt)}
 </style>
 </head>
 <body>
 
-<!-- EDIT BAR -->
+<!-- EDIT MODE BAR -->
 <div class="edit-bar">
-  <div class="hbadge">✦ Brand Playbook</div>
+  <div class="edit-bar-label">✦ Brand Playbook</div>
   <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
-    <div class="edit-toggle" onclick="toggleEdit()">
-      <div class="toggle-track" id="tTrack"><div class="toggle-thumb"></div></div>
-      <span class="toggle-label" id="tLabel">Mode lecture</span>
+    <div class="edit-toggle" onclick="toggleEditMode()">
+      <div class="toggle-track" id="toggleTrack"><div class="toggle-thumb"></div></div>
+      <span class="toggle-label" id="toggleLabel">Mode lecture</span>
     </div>
-    <button class="add-btn" onclick="openAdd()">+ Ajouter</button>
+    <button class="add-btn" onclick="openAddModal()">+ Ajouter une marque</button>
   </div>
 </div>
 
 <!-- HEADER -->
 <div class="header">
-  <div class="hbadge">✦ Brand Playbook</div>
+  <div class="header-badge">✦ Brand Playbook</div>
   <h1>Beck<em>'s</em> × Morgane</h1>
   <div class="header-sub">@be_beckss · Marques mode testées & recommandées</div>
   <div class="header-stats">
@@ -265,286 +198,300 @@ body.editing .card-edit-actions{display:flex;flex-wrap:wrap}
 
 <!-- TABS -->
 <div class="tabs">
-  <div class="tab active" onclick="setTab('sl')">Semi-luxe <span class="tab-count" id="tc-sl"></span></div>
-  <div class="tab" onclick="setTab('ic')">Indé connue <span class="tab-count" id="tc-ic"></span></div>
-  <div class="tab" onclick="setTab('id')">Indé à découvrir <span class="tab-count" id="tc-id"></span></div>
-  <div class="tab" onclick="setTab('mif')">Made in France <span class="tab-count" id="tc-mif"></span></div>
-  <div class="tab" onclick="setTab('bij')">Bijoux & Accès <span class="tab-count" id="tc-bij"></span></div>
+  <div class="tab active" onclick="setTab('semi-luxe')">Semi-luxe <span class="tab-count" id="tc-semi-luxe">23</span></div>
+  <div class="tab" onclick="setTab('indie-connue')">Indé connue <span class="tab-count" id="tc-indie-connue">5</span></div>
+  <div class="tab" onclick="setTab('indie-deco')">Indé à découvrir <span class="tab-count" id="tc-indie-deco">28</span></div>
+  <div class="tab" onclick="setTab('mif')">Made in France <span class="tab-count" id="tc-mif">8</span></div>
+  <div class="tab" onclick="setTab('bijoux')">Bijoux & Accès <span class="tab-count" id="tc-bijoux">8</span></div>
 </div>
 
-<!-- CATS -->
-<div class="cat-view active" id="cat-sl">
+<!-- CAT SEMI-LUXE -->
+<div class="cat-view active" id="cat-semi-luxe">
   <div class="cat-header"><div class="cat-title">Semi-<em>luxe</em></div><div class="cat-subtitle">Marques accessibles haut de gamme · 60€ – 450€</div></div>
   <div class="filters">
-    <div class="filter-pill active" onclick="setFilter(this,'sl','tout')">Tout</div>
-    <div class="filter-pill" onclick="setFilter(this,'sl','tested')">✓ Testées</div>
-    <div class="filter-pill" onclick="setFilter(this,'sl','wishlist')">♡ Wishlist</div>
-    <div class="filter-pill" onclick="setFilter(this,'sl','todo')">À compléter</div>
-    <div class="filter-pill" onclick="setFilter(this,'sl','hidden')">👁 Masquées</div>
+    <div class="filter-pill active" onclick="setFilter(this,'semi-luxe','tout')">Tout</div>
+    <div class="filter-pill" onclick="setFilter(this,'semi-luxe','tested')">✓ Testées</div>
+    <div class="filter-pill" onclick="setFilter(this,'semi-luxe','wishlist')">♡ Wishlist</div>
+    <div class="filter-pill" onclick="setFilter(this,'semi-luxe','todo')">À compléter</div>
   </div>
-  <div class="no-result" id="no-sl"><p>Aucune marque trouvée 🔍</p></div>
-  <div class="brands-list" id="brands-sl"></div>
+  <div class="no-result" id="no-semi-luxe"><p>Aucune marque trouvée 🔍</p></div>
+  <div class="brands-list" id="brands-semi-luxe"></div>
 </div>
 
-<div class="cat-view" id="cat-ic">
-  <div class="cat-header"><div class="cat-title">Indé <em>connue</em></div><div class="cat-subtitle">Marques indépendantes bien implantées</div></div>
+<div class="cat-view" id="cat-indie-connue">
+  <div class="cat-header"><div class="cat-title">Indé <em>connue</em></div><div class="cat-subtitle">Marques indépendantes déjà bien implantées</div></div>
   <div class="filters">
-    <div class="filter-pill active" onclick="setFilter(this,'ic','tout')">Tout</div>
-    <div class="filter-pill" onclick="setFilter(this,'ic','tested')">✓ Testées</div>
-    <div class="filter-pill" onclick="setFilter(this,'ic','wishlist')">♡ Wishlist</div>
-    <div class="filter-pill" onclick="setFilter(this,'ic','todo')">À compléter</div>
-    <div class="filter-pill" onclick="setFilter(this,'ic','hidden')">👁 Masquées</div>
+    <div class="filter-pill active" onclick="setFilter(this,'indie-connue','tout')">Tout</div>
+    <div class="filter-pill" onclick="setFilter(this,'indie-connue','tested')">✓ Testées</div>
+    <div class="filter-pill" onclick="setFilter(this,'indie-connue','wishlist')">♡ Wishlist</div>
+    <div class="filter-pill" onclick="setFilter(this,'indie-connue','todo')">À compléter</div>
   </div>
-  <div class="no-result" id="no-ic"><p>Aucune marque trouvée 🔍</p></div>
-  <div class="brands-list" id="brands-ic"></div>
+  <div class="no-result" id="no-indie-connue"><p>Aucune marque trouvée 🔍</p></div>
+  <div class="brands-list" id="brands-indie-connue"></div>
 </div>
 
-<div class="cat-view" id="cat-id">
+<div class="cat-view" id="cat-indie-deco">
   <div class="cat-header"><div class="cat-title">Indé à <em>découvrir</em></div><div class="cat-subtitle">Pépites indépendantes · à tester & alimenter</div></div>
   <div class="filters">
-    <div class="filter-pill active" onclick="setFilter(this,'id','tout')">Tout</div>
-    <div class="filter-pill" onclick="setFilter(this,'id','tested')">✓ Testées</div>
-    <div class="filter-pill" onclick="setFilter(this,'id','wishlist')">♡ Wishlist</div>
-    <div class="filter-pill" onclick="setFilter(this,'id','todo')">À compléter</div>
-    <div class="filter-pill" onclick="setFilter(this,'id','hidden')">👁 Masquées</div>
+    <div class="filter-pill active" onclick="setFilter(this,'indie-deco','tout')">Tout</div>
+    <div class="filter-pill" onclick="setFilter(this,'indie-deco','tested')">✓ Testées</div>
+    <div class="filter-pill" onclick="setFilter(this,'indie-deco','wishlist')">♡ Wishlist</div>
+    <div class="filter-pill" onclick="setFilter(this,'indie-deco','todo')">À compléter</div>
   </div>
-  <div class="no-result" id="no-id"><p>Aucune marque trouvée 🔍</p></div>
-  <div class="brands-list" id="brands-id"></div>
+  <div class="no-result" id="no-indie-deco"><p>Aucune marque trouvée 🔍</p></div>
+  <div class="brands-list" id="brands-indie-deco"></div>
 </div>
 
 <div class="cat-view" id="cat-mif">
-  <div class="cat-header"><div class="cat-title">Made in <em>France</em></div><div class="cat-subtitle">Fabrication française & éco-responsable</div></div>
+  <div class="cat-header"><div class="cat-title">Made in <em>France</em></div><div class="cat-subtitle">Fabrication française & engagée · éco-responsable</div></div>
   <div class="filters">
     <div class="filter-pill active" onclick="setFilter(this,'mif','tout')">Tout</div>
     <div class="filter-pill" onclick="setFilter(this,'mif','tested')">✓ Testées</div>
     <div class="filter-pill" onclick="setFilter(this,'mif','wishlist')">♡ Wishlist</div>
     <div class="filter-pill" onclick="setFilter(this,'mif','todo')">À compléter</div>
-    <div class="filter-pill" onclick="setFilter(this,'mif','hidden')">👁 Masquées</div>
   </div>
   <div class="no-result" id="no-mif"><p>Aucune marque trouvée 🔍</p></div>
   <div class="brands-list" id="brands-mif"></div>
 </div>
 
-<div class="cat-view" id="cat-bij">
+<div class="cat-view" id="cat-bijoux">
   <div class="cat-header"><div class="cat-title">Bijoux & <em>Accessoires</em></div><div class="cat-subtitle">Bijoux, sacs & accessoires mode</div></div>
   <div class="filters">
-    <div class="filter-pill active" onclick="setFilter(this,'bij','tout')">Tout</div>
-    <div class="filter-pill" onclick="setFilter(this,'bij','tested')">✓ Testées</div>
-    <div class="filter-pill" onclick="setFilter(this,'bij','wishlist')">♡ Wishlist</div>
-    <div class="filter-pill" onclick="setFilter(this,'bij','todo')">À compléter</div>
-    <div class="filter-pill" onclick="setFilter(this,'bij','hidden')">👁 Masquées</div>
+    <div class="filter-pill active" onclick="setFilter(this,'bijoux','tout')">Tout</div>
+    <div class="filter-pill" onclick="setFilter(this,'bijoux','tested')">✓ Testées</div>
+    <div class="filter-pill" onclick="setFilter(this,'bijoux','wishlist')">♡ Wishlist</div>
+    <div class="filter-pill" onclick="setFilter(this,'bijoux','todo')">À compléter</div>
   </div>
-  <div class="no-result" id="no-bij"><p>Aucune marque trouvée 🔍</p></div>
-  <div class="brands-list" id="brands-bij"></div>
+  <div class="no-result" id="no-bijoux"><p>Aucune marque trouvée 🔍</p></div>
+  <div class="brands-list" id="brands-bijoux"></div>
 </div>
 
 <div class="page-footer">
-  <div class="pfl">Beck<em>'s</em> × Morgane</div>
-  <div class="pfr">Brand Playbook 2026</div>
+  <div class="page-footer-left">Beck<em>'s</em> × Morgane</div>
+  <div class="page-footer-right">Brand Playbook 2026</div>
 </div>
 
-<!-- EDIT MODAL -->
-<div class="overlay" id="editModal">
+<!-- ══ EDIT MODAL ══ -->
+<div class="modal-overlay" id="editModal">
   <div class="modal">
-    <div class="modal-hdr">
-      <div class="modal-title">Modifier <em id="mName"></em></div>
-      <button class="modal-close" onclick="closeEdit()">✕</button>
+    <div class="modal-header">
+      <div class="modal-title">Modifier <em id="modalBrandName"></em></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="fg"><div class="fl">Statut</div>
-        <select class="fs" id="fStatus">
+      <div class="form-group">
+        <div class="form-label">Statut</div>
+        <select class="form-select" id="fStatus">
           <option value="tested">✓ Testée & mentionnée</option>
           <option value="wishlist">♡ Wishlist</option>
           <option value="todo">À compléter</option>
         </select>
       </div>
-      <div class="fr2">
-        <div class="fg"><div class="fl">Type de vêtements</div><input class="fi" id="fType" placeholder="Robes, tops…"></div>
-        <div class="fg"><div class="fl">Style</div><input class="fi" id="fStyle" placeholder="Bohème, féminin…"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <div class="form-label">Type de vêtements</div>
+          <input class="form-input" id="fType" type="text" placeholder="Ex : Robes, tops…">
+        </div>
+        <div class="form-group">
+          <div class="form-label">Style</div>
+          <input class="form-input" id="fStyle" type="text" placeholder="Ex : Bohème, féminin…">
+        </div>
       </div>
-      <div class="fr2">
-        <div class="fg"><div class="fl">Gamme de prix</div><input class="fi" id="fPrix" placeholder="40€ – 120€"></div>
-        <div class="fg"><div class="fl">Tailles</div><input class="fi" id="fTailles" placeholder="XS → XL"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <div class="form-label">Gamme de prix</div>
+          <input class="form-input" id="fPrix" type="text" placeholder="Ex : 40€ – 120€">
+        </div>
+        <div class="form-group">
+          <div class="form-label">Tailles</div>
+          <input class="form-input" id="fTailles" type="text" placeholder="Ex : XS → XL">
+        </div>
       </div>
-      <div class="fg"><div class="fl">Site / Où trouver</div><input class="fi" id="fSite" placeholder="sezane.com"></div>
-      <div class="fg"><div class="fl">🌿 Avis Morgane</div><textarea class="ft" id="fAvis" placeholder="Ton avis honnête…"></textarea></div>
-      <div class="fg"><div class="fl">🎬 Lien haul TikTok</div><input class="fi" id="fLien" placeholder="https://tiktok.com/…"></div>
+      <div class="form-group">
+        <div class="form-label">Site / Où trouver</div>
+        <input class="form-input" id="fSite" type="text" placeholder="Ex : sezane.com">
+      </div>
+      <div class="form-group">
+        <div class="form-label">🌿 Avis Morgane</div>
+        <textarea class="form-textarea" id="fAvis" placeholder="Ton avis honnête sur la marque…"></textarea>
+      </div>
+      <div class="form-group">
+        <div class="form-label">🎬 Lien haul TikTok</div>
+        <input class="form-input" id="fLien" type="text" placeholder="https://tiktok.com/@be_beckss/video/...">
+      </div>
     </div>
     <div class="form-actions">
-      <button class="btn-cancel" onclick="closeEdit()">Annuler</button>
-      <button class="btn-save" onclick="saveEdit()">💾 Enregistrer</button>
+      <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-save" onclick="saveCard()">💾 Enregistrer</button>
     </div>
   </div>
 </div>
 
-<!-- ADD MODAL -->
-<div class="overlay" id="addModal">
+<!-- ══ ADD MODAL ══ -->
+<div class="add-modal-overlay" id="addModal">
   <div class="modal">
-    <div class="modal-hdr">
+    <div class="modal-header">
       <div class="modal-title">Ajouter une <em>marque</em></div>
-      <button class="modal-close" onclick="closeAdd()">✕</button>
+      <button class="modal-close" onclick="closeAddModal()">✕</button>
     </div>
     <div class="modal-body">
-      <div class="fg"><div class="fl">Nom *</div><input class="fi" id="aNom" placeholder="Ex : Johanna Paris"></div>
-      <div class="fg"><div class="fl">Catégorie *</div>
-        <select class="fs" id="aCat">
-          <option value="sl">Semi-luxe</option>
-          <option value="ic">Indé connue</option>
-          <option value="id">Indé à découvrir</option>
+      <div class="form-group">
+        <div class="form-label">Nom de la marque *</div>
+        <input class="form-input" id="aNom" type="text" placeholder="Ex : Johanna Paris">
+      </div>
+      <div class="form-group">
+        <div class="form-label">Catégorie *</div>
+        <select class="form-select" id="aCat">
+          <option value="semi-luxe">Semi-luxe</option>
+          <option value="indie-connue">Indé connue</option>
+          <option value="indie-deco">Indé à découvrir</option>
           <option value="mif">Made in France</option>
-          <option value="bij">Bijoux & Accessoires</option>
+          <option value="bijoux">Bijoux & Accessoires</option>
         </select>
       </div>
-      <div class="fg"><div class="fl">Statut</div>
-        <select class="fs" id="aStatus">
+      <div class="form-group">
+        <div class="form-label">Statut</div>
+        <select class="form-select" id="aStatus">
           <option value="todo">À compléter</option>
           <option value="tested">✓ Testée</option>
           <option value="wishlist">♡ Wishlist</option>
         </select>
       </div>
-      <div class="fr2">
-        <div class="fg"><div class="fl">Type</div><input class="fi" id="aType" placeholder="Robes, tops…"></div>
-        <div class="fg"><div class="fl">Prix</div><input class="fi" id="aPrix" placeholder="40€ – 120€"></div>
+      <div class="form-row">
+        <div class="form-group">
+          <div class="form-label">Type de vêtements</div>
+          <input class="form-input" id="aType" type="text" placeholder="Robes, tops…">
+        </div>
+        <div class="form-group">
+          <div class="form-label">Gamme de prix</div>
+          <input class="form-input" id="aPrix" type="text" placeholder="40€ – 120€">
+        </div>
       </div>
-      <div class="fg"><div class="fl">🌿 Avis Morgane</div><textarea class="ft" id="aAvis" placeholder="Ton avis…" style="min-height:60px"></textarea></div>
+      <div class="form-group">
+        <div class="form-label">🌿 Avis Morgane</div>
+        <textarea class="form-textarea" id="aAvis" placeholder="Ton avis…" style="min-height:60px"></textarea>
+      </div>
     </div>
     <div class="form-actions">
-      <button class="btn-cancel" onclick="closeAdd()">Annuler</button>
-      <button class="btn-save" onclick="doAdd()">+ Ajouter</button>
+      <button class="btn-cancel" onclick="closeAddModal()">Annuler</button>
+      <button class="btn-save" onclick="addBrand()">+ Ajouter</button>
     </div>
   </div>
 </div>
-
-<!-- CONFIRM DIALOG -->
-<div class="confirm-overlay" id="confirmDlg">
-  <div class="confirm-box">
-    <div class="confirm-emoji" id="confEmoji">🗑️</div>
-    <div class="confirm-title" id="confTitle">Supprimer ?</div>
-    <div class="confirm-sub" id="confSub">Cette action est irréversible.</div>
-    <div class="confirm-btns">
-      <button class="conf-cancel" onclick="closeConfirm()">Annuler</button>
-      <button class="conf-ok" id="confOk">Confirmer</button>
-    </div>
-  </div>
-</div>
-
-<!-- hidden file input for photos -->
-<input type="file" id="photoInput" accept="image/*" style="display:none" onchange="handlePhotoUpload(event)">
 
 <script>
 // ══ DATA ══
-const CATS = ['sl','ic','id','mif','bij'];
-
-const BASE = {
-  sl:[
-    {name:"Sézane",status:"tested",type:"PAP, denim, knitwear",style:"Parisien décontracté, intemporel",prix:"60€ – 250€",tailles:"XS → XL",site:"sezane.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Rouje",status:"wishlist",type:"Robes, tops, denim",style:"Féminin seventies, solaire",prix:"80€ – 280€",tailles:"34 → 44",site:"rouje.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Ba&sh",status:"todo",type:"PAP complet",style:"Parisien chic décontracté",prix:"80€ – 350€",tailles:"34 → 44",site:"ba-sh.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Maje",status:"wishlist",type:"Robes, vestes, blouses",style:"Féminin chic, légèrement rock",prix:"80€ – 350€",tailles:"34 → 44",site:"maje.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Claudie Pierlot",status:"todo",type:"PAP complet",style:"Parisien élégant, graphique",prix:"90€ – 380€",tailles:"34 → 44",site:"claudiepierlot.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Sessùn",status:"todo",type:"PAP, robes, knitwear",style:"Bohème méditerranéen, naturel",prix:"70€ – 280€",tailles:"34 → 42",site:"sessun.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Soeur",status:"todo",type:"Robes, manteaux, pulls",style:"Poétique, féminin, parisien",prix:"80€ – 320€",tailles:"34 → 44",site:"soeur.fr",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Des Petits Hauts",status:"todo",type:"Tops, robes, knitwear",style:"Bohème chic, coloré, joyeux",prix:"60€ – 200€",tailles:"34 → 46",site:"despetitshauts.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Vanessa Bruno",status:"wishlist",type:"PAP, sacs, accessoires",style:"Parisien naturel, délicat",prix:"100€ – 400€",tailles:"34 → 44",site:"vanessabruno.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Ganni",status:"todo",type:"Robes, denim, knitwear",style:"Scandinave joyeux, décalé",prix:"80€ – 350€",tailles:"32 → 44",site:"ganni.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"A.P.C.",status:"todo",type:"Denim, basics, PAP",style:"Minimaliste français, intemporel",prix:"80€ – 400€",tailles:"XS → XL",site:"apc.fr",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Isabel Marant Étoile",status:"todo",type:"PAP, robes, denim",style:"Bohème chic, rock parisien",prix:"100€ – 400€",tailles:"34 → 42",site:"isabelmarant.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Réalisation Par",status:"wishlist",type:"Robes, tops, jupes",style:"Féminin sensuel, estival",prix:"100€ – 250€",tailles:"XS → XL",site:"realisationpar.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Iro",status:"todo",type:"PAP, vestes, robes",style:"Rock parisien, édgy",prix:"100€ – 400€",tailles:"34 → 44",site:"iroparis.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"The Kooples",status:"todo",type:"PAP, cuir, denim",style:"Rock chic, androgyne, urbain",prix:"100€ – 450€",tailles:"XS → XL",site:"thekooples.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Sandro",status:"todo",type:"PAP, robes, vestes",style:"Parisien chic, intemporel",prix:"90€ – 400€",tailles:"34 → 44",site:"sandro-paris.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Maison Kitsuné",status:"wishlist",type:"PAP, sweat, knitwear",style:"Parisien-japonais, streetwear chic",prix:"80€ – 350€",tailles:"XS → XL",site:"maisonkitsune.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Jacquemus",status:"wishlist",type:"Robes, hauts, accessoires",style:"Méditerranéen, minimaliste solaire",prix:"100€ – 400€",tailles:"34 → 44",site:"jacquemus.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Musier Paris",status:"todo",type:"Robes, hauts, knitwear",style:"Féminin parisien, créatrice influenceuse",prix:"80€ – 300€",tailles:"XS → L",site:"musier-paris.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Petite Mendigote",status:"todo",type:"Robes, hauts, accessoires",style:"Bohème élégant, accessoires signature",prix:"60€ – 250€",tailles:"34 → 44",site:"petitemendigote.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Hartford",status:"todo",type:"Chemises, robes, pantalons",style:"Casual chic vintage américain-anglais",prix:"80€ – 300€",tailles:"34 → 44",site:"hartford.fr",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"The Frankie Shop",status:"wishlist",type:"Blazers, pantalons, robes",style:"Minimaliste moderne, tailoring chic",prix:"100€ – 400€",tailles:"XS → XL",site:"thefrankieshop.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Anine Bing",status:"todo",type:"Basics luxe, robes, vestes",style:"LA cool, effortless, féminin rock",prix:"100€ – 400€",tailles:"XS → XL",site:"aninebing.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
+const DATA = {
+  'semi-luxe':[
+    {name:"Sézane",status:"tested",type:"PAP, denim, knitwear",style:"Parisien décontracté, intemporel",prix:"60€ – 250€",tailles:"XS → XL",site:"sezane.com",avis:"",lien:"",extra:""},
+    {name:"Rouje",status:"wishlist",type:"Robes, tops, denim",style:"Féminin seventies, solaire",prix:"80€ – 280€",tailles:"34 → 44",site:"rouje.com",avis:"",lien:"",extra:""},
+    {name:"Ba&sh",status:"todo",type:"PAP complet",style:"Parisien chic décontracté",prix:"80€ – 350€",tailles:"34 → 44",site:"ba-sh.com",avis:"",lien:"",extra:""},
+    {name:"Maje",status:"wishlist",type:"Robes, vestes, blouses",style:"Féminin chic, légèrement rock",prix:"80€ – 350€",tailles:"34 → 44",site:"maje.com",avis:"",lien:"",extra:""},
+    {name:"Claudie Pierlot",status:"todo",type:"PAP complet",style:"Parisien élégant, graphique",prix:"90€ – 380€",tailles:"34 → 44",site:"claudiepierlot.com",avis:"",lien:"",extra:""},
+    {name:"Sessùn",status:"todo",type:"PAP, robes, knitwear",style:"Bohème méditerranéen, naturel",prix:"70€ – 280€",tailles:"34 → 42",site:"sessun.com",avis:"",lien:"",extra:""},
+    {name:"Soeur",status:"todo",type:"Robes, manteaux, pulls",style:"Poétique, féminin, parisien",prix:"80€ – 320€",tailles:"34 → 44",site:"soeur.fr",avis:"",lien:"",extra:""},
+    {name:"Des Petits Hauts",status:"todo",type:"Tops, robes, knitwear",style:"Bohème chic, coloré, joyeux",prix:"60€ – 200€",tailles:"34 → 46",site:"despetitshauts.com",avis:"",lien:"",extra:""},
+    {name:"Vanessa Bruno",status:"wishlist",type:"PAP, sacs, accessoires",style:"Parisien naturel, délicat",prix:"100€ – 400€",tailles:"34 → 44",site:"vanessabruno.com",avis:"",lien:"",extra:""},
+    {name:"Ganni",status:"todo",type:"Robes, denim, knitwear",style:"Scandinave joyeux, décalé",prix:"80€ – 350€",tailles:"32 → 44",site:"ganni.com",avis:"",lien:"",extra:""},
+    {name:"A.P.C.",status:"todo",type:"Denim, basics, PAP",style:"Minimaliste français, intemporel",prix:"80€ – 400€",tailles:"XS → XL",site:"apc.fr",avis:"",lien:"",extra:""},
+    {name:"Isabel Marant Étoile",status:"todo",type:"PAP, robes, denim",style:"Bohème chic, rock parisien",prix:"100€ – 400€",tailles:"34 → 42",site:"isabelmarant.com",avis:"",lien:"",extra:""},
+    {name:"Réalisation Par",status:"wishlist",type:"Robes, tops, jupes",style:"Féminin sensuel, estival",prix:"100€ – 250€",tailles:"XS → XL",site:"realisationpar.com",avis:"",lien:"",extra:""},
+    {name:"Iro",status:"todo",type:"PAP, vestes, robes",style:"Rock parisien, édgy",prix:"100€ – 400€",tailles:"34 → 44",site:"iroparis.com",avis:"",lien:"",extra:""},
+    {name:"The Kooples",status:"todo",type:"PAP, cuir, denim",style:"Rock chic, androgyne, urbain",prix:"100€ – 450€",tailles:"XS → XL",site:"thekooples.com",avis:"",lien:"",extra:""},
+    {name:"Sandro",status:"todo",type:"PAP, robes, vestes",style:"Parisien chic, intemporel",prix:"90€ – 400€",tailles:"34 → 44",site:"sandro-paris.com",avis:"",lien:"",extra:""},
+    {name:"Maison Kitsuné",status:"wishlist",type:"PAP, sweat, knitwear",style:"Parisien-japonais, streetwear chic",prix:"80€ – 350€",tailles:"XS → XL",site:"maisonkitsune.com",avis:"",lien:"",extra:""},
+    {name:"Jacquemus",status:"wishlist",type:"Robes, hauts, accessoires",style:"Méditerranéen, minimaliste solaire",prix:"100€ – 400€",tailles:"34 → 44",site:"jacquemus.com",avis:"",lien:"",extra:""},
+    {name:"Musier Paris",status:"todo",type:"Robes, hauts, knitwear",style:"Féminin parisien, créatrice influenceuse",prix:"80€ – 300€",tailles:"XS → L",site:"musier-paris.com",avis:"",lien:"",extra:""},
+    {name:"Petite Mendigote",status:"todo",type:"Robes, hauts, accessoires",style:"Bohème élégant, accessoires signature",prix:"60€ – 250€",tailles:"34 → 44",site:"petitemendigote.com",avis:"",lien:"",extra:""},
+    {name:"Hartford",status:"todo",type:"Chemises, robes, pantalons",style:"Casual chic vintage américain-anglais",prix:"80€ – 300€",tailles:"34 → 44",site:"hartford.fr",avis:"",lien:"",extra:""},
+    {name:"The Frankie Shop",status:"wishlist",type:"Blazers, pantalons, robes",style:"Minimaliste moderne, tailoring chic",prix:"100€ – 400€",tailles:"XS → XL",site:"thefrankieshop.com",avis:"",lien:"",extra:""},
+    {name:"Anine Bing",status:"todo",type:"Basics luxe, robes, vestes",style:"LA cool, effortless, féminin rock",prix:"100€ – 400€",tailles:"XS → XL",site:"aninebing.com",avis:"",lien:"",extra:""},
   ],
-  ic:[
-    {name:"Johanna Paris",status:"tested",type:"Robes, ensembles, blouses",style:"Romantique, féminin, coloré",prix:"40€ – 120€",tailles:"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Toscane & Joe",status:"tested",type:"Robes, jupes, hauts",style:"Bohème méditerranéen, estival",prix:"",tailles:"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Intuition Paris",status:"tested",type:"Robes, tops, pantalons",style:"Féminin parisien, élégant casual",prix:"",tailles:"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Senes",status:"tested",type:"",style:"",prix:"",tailles:"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Sens Uniq",status:"tested",type:"",style:"",prix:"",tailles:"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:""},
+  'indie-connue':[
+    {name:"Johanna Paris",status:"tested",type:"Robes, ensembles, blouses",style:"Romantique, féminin, coloré",prix:"40€ – 120€",tailles:"",site:"",avis:"",lien:"",extra:""},
+    {name:"Toscane & Joe",status:"tested",type:"Robes, jupes, hauts",style:"Bohème méditerranéen, estival",prix:"",tailles:"",site:"",avis:"",lien:"",extra:""},
+    {name:"Intuition Paris",status:"tested",type:"Robes, tops, pantalons",style:"Féminin parisien, élégant casual",prix:"",tailles:"",site:"",avis:"",lien:"",extra:""},
+    {name:"Senes",status:"tested",type:"",style:"",prix:"",tailles:"",site:"",avis:"",lien:"",extra:""},
+    {name:"Sens Uniq",status:"tested",type:"",style:"",prix:"",tailles:"",site:"",avis:"",lien:"",extra:""},
   ],
-  id:["lukap","wiya","margot","it hippie","j&l","js millenium","gioya go","by coco","gold and silver","an'ge","garçonne","louizon","musy muse","mino du sud","orlinn","andromede","millenium","perla bella","moment","mamie bourgeoise","orfeo","sophie & me","ambika","aroma","grunge mama","ciminy","c'melody","poème"]
-    .map(n=>({name:cap(n),status:"todo",type:"",style:"",prix:"",tailles:n==="c'melody"?"42 → 56":"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:n==="c'melody"?'<span class="pill pill-size">Grande taille</span>':""})),
-  mif:[
-    {name:"Balzac Paris",status:"wishlist",type:"Robes, hauts, knitwear",style:"Parisien décontracté, coloré",prix:"50€ – 200€",tailles:"XS → XL",site:"balzac-paris.fr",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
-    {name:"Maison Standards",status:"todo",type:"Basics, essentiels",style:"Minimaliste, intemporel, épuré",prix:"30€ – 150€",tailles:"XS → XL",site:"lamaisonstandards.com",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-eco">♻ Éco</span>'},
-    {name:"1083",status:"todo",type:"Denim, pantalons",style:"Jean 100% français, responsable",prix:"90€ – 180€",tailles:"XS → XL",site:"1083.fr",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-mif">🇫🇷 MIF</span><span class="pill pill-eco">♻ Éco</span>'},
-    {name:"Veja",status:"todo",type:"Sneakers, chaussures",style:"Sport chic, minimaliste éco",prix:"100€ – 200€",tailles:"35 → 42",site:"veja-store.com",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-eco">♻ Éco</span>'},
-    {name:"Maison Cléo",status:"wishlist",type:"Robes, hauts faits main",style:"Artisanal, romantique, slow fashion",prix:"80€ – 250€",tailles:"XS → XL",site:"maisoncleo.com",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
-    {name:"Caramel & Cie",status:"todo",type:"Knitwear, pulls, hauts",style:"Naturel, artisanal, matières nobles",prix:"80€ – 200€",tailles:"XS → XL",site:"",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
-    {name:"Roé",status:"todo",type:"Maillots, robes",style:"Côtier, slow fashion, éthique",prix:"80€ – 200€",tailles:"XS → L",site:"",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-eco">♻ Éco</span>'},
-    {name:"Atelier Tuffery",status:"todo",type:"Denim, jeans, salopettes",style:"Artisanal, made in Lozère, premium",prix:"150€ – 300€",tailles:"34 → 46",site:"atelier-tuffery.com",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
+  'indie-deco':[
+    "lukap","wiya","margot","it hippie","j&l","js millenium","gioya go","by coco",
+    "gold and silver","an'ge","garçonne","louizon","musy muse","mino du sud","orlinn",
+    "andromede","millenium","perla bella","moment","mamie bourgeoise","orfeo",
+    "sophie & me","ambika","aroma","grunge mama","ciminy","c'melody","poème"
+  ].map(n=>({name:cap(n),status:"todo",type:"",style:"",prix:"",tailles:n==="c'melody"?"42 → 56":"",site:"",avis:"",lien:"",extra:n==="c'melody"?'<span class="pill pill-size">Grande taille</span>':""})),
+  'mif':[
+    {name:"Balzac Paris",status:"wishlist",type:"Robes, hauts, knitwear",style:"Parisien décontracté, coloré",prix:"50€ – 200€",tailles:"XS → XL",site:"balzac-paris.fr",avis:"",lien:"",extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
+    {name:"Maison Standards",status:"todo",type:"Basics, essentiels",style:"Minimaliste, intemporel, épuré",prix:"30€ – 150€",tailles:"XS → XL",site:"lamaisonstandards.com",avis:"",lien:"",extra:'<span class="pill pill-eco">♻ Éco</span>'},
+    {name:"1083",status:"todo",type:"Denim, pantalons",style:"Jean 100% français, responsable",prix:"90€ – 180€",tailles:"XS → XL",site:"1083.fr",avis:"",lien:"",extra:'<span class="pill pill-mif">🇫🇷 MIF</span><span class="pill pill-eco">♻ Éco</span>'},
+    {name:"Veja",status:"todo",type:"Sneakers, chaussures",style:"Sport chic, minimaliste éco",prix:"100€ – 200€",tailles:"35 → 42",site:"veja-store.com",avis:"",lien:"",extra:'<span class="pill pill-eco">♻ Éco</span>'},
+    {name:"Maison Cléo",status:"wishlist",type:"Robes, hauts faits main",style:"Artisanal, romantique, slow fashion",prix:"80€ – 250€",tailles:"XS → XL",site:"maisoncleo.com",avis:"",lien:"",extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
+    {name:"Caramel & Cie",status:"todo",type:"Knitwear, pulls, hauts",style:"Naturel, artisanal, matières nobles",prix:"80€ – 200€",tailles:"XS → XL",site:"",avis:"",lien:"",extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
+    {name:"Roé",status:"todo",type:"Maillots, robes",style:"Côtier, slow fashion, éthique",prix:"80€ – 200€",tailles:"XS → L",site:"",avis:"",lien:"",extra:'<span class="pill pill-eco">♻ Éco</span>'},
+    {name:"Atelier Tuffery",status:"todo",type:"Denim, jeans, salopettes",style:"Artisanal, made in Lozère, premium",prix:"150€ – 300€",tailles:"34 → 46",site:"atelier-tuffery.com",avis:"",lien:"",extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
   ],
-  bij:[
-    {name:"APM Monaco",status:"wishlist",type:"Bijoux, bagues, colliers",style:"Luxe accessible, Mediterranean chic",prix:"50€ – 400€",tailles:"",site:"apm.mc",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Zag Bijoux",status:"todo",type:"Bijoux fantaisie",style:"Coloré, tendance, accessible",prix:"20€ – 100€",tailles:"",site:"zagbijoux.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Nébuleuse Bijoux",status:"todo",type:"Bijoux, bagues, pendentifs",style:"Poétique, minimaliste, nature",prix:"20€ – 150€",tailles:"",site:"nebuleuse-bijoux.com",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Maison Cléo Bijoux",status:"wishlist",type:"Bijoux fait main",style:"Artisanal, romantique, vintage",prix:"30€ – 150€",tailles:"",site:"maisoncleo.com",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
-    {name:"Maison Dorée",status:"todo",type:"Bijoux, colliers, bagues",style:"Solaire, méditerranéen, doré",prix:"30€ – 200€",tailles:"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"L'Atelier d'Amaya",status:"todo",type:"Bijoux, colliers, bracelets",style:"Bohème, naturel, pierres",prix:"40€ – 200€",tailles:"",site:"",avis:"",lien:"",photo:"",hidden:false,extra:""},
-    {name:"Craie",status:"todo",type:"Sacs, maroquinerie",style:"Créatif, artisanal, coloré",prix:"150€ – 400€",tailles:"",site:"craie-paris.com",avis:"",lien:"",photo:"",hidden:false,extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
-    {name:"Pandora",status:"todo",type:"Bijoux, charms, bracelets",style:"Personnalisable, accessible, gift",prix:"30€ – 200€",tailles:"",site:"pandora.net",avis:"",lien:"",photo:"",hidden:false,extra:""},
+  'bijoux':[
+    {name:"APM Monaco",status:"wishlist",type:"Bijoux, bagues, colliers",style:"Luxe accessible, Mediterranean chic",prix:"50€ – 400€",tailles:"",site:"apm.mc",avis:"",lien:"",extra:""},
+    {name:"Zag Bijoux",status:"todo",type:"Bijoux fantaisie",style:"Coloré, tendance, accessible",prix:"20€ – 100€",tailles:"",site:"zagbijoux.com",avis:"",lien:"",extra:""},
+    {name:"Nébuleuse Bijoux",status:"todo",type:"Bijoux, bagues, pendentifs",style:"Poétique, minimaliste, nature",prix:"20€ – 150€",tailles:"",site:"nebuleuse-bijoux.com",avis:"",lien:"",extra:""},
+    {name:"Maison Cléo Bijoux",status:"wishlist",type:"Bijoux fait main",style:"Artisanal, romantique, vintage",prix:"30€ – 150€",tailles:"",site:"maisoncleo.com",avis:"",lien:"",extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
+    {name:"Maison Dorée",status:"todo",type:"Bijoux, colliers, bagues",style:"Solaire, méditerranéen, doré",prix:"30€ – 200€",tailles:"",site:"",avis:"",lien:"",extra:""},
+    {name:"L'Atelier d'Amaya",status:"todo",type:"Bijoux, colliers, bracelets",style:"Bohème, naturel, pierres",prix:"40€ – 200€",tailles:"",site:"",avis:"",lien:"",extra:""},
+    {name:"Craie",status:"todo",type:"Sacs, maroquinerie",style:"Créatif, artisanal, coloré",prix:"150€ – 400€",tailles:"",site:"craie-paris.com",avis:"",lien:"",extra:'<span class="pill pill-mif">🇫🇷 MIF</span>'},
+    {name:"Pandora",status:"todo",type:"Bijoux, charms, bracelets",style:"Personnalisable, accessible, gift",prix:"30€ – 200€",tailles:"",site:"pandora.net",avis:"",lien:"",extra:""},
   ],
 };
 
-// ── STATE ──
-let DATA = JSON.parse(JSON.stringify(BASE));
-
-function load(){
-  try{const s=localStorage.getItem('bpv7');if(s)DATA=JSON.parse(s);}catch(e){}
+// Merge localStorage overrides
+function loadSaved(){
+  try{
+    const s=localStorage.getItem('bp_data');
+    if(s){
+      const saved=JSON.parse(s);
+      Object.keys(saved).forEach(cat=>{
+        if(!DATA[cat]) DATA[cat]=[];
+        saved[cat].forEach(sv=>{
+          const idx=DATA[cat].findIndex(b=>b.name===sv.name);
+          if(idx>=0) DATA[cat][idx]={...DATA[cat][idx],...sv};
+          else DATA[cat].push(sv);
+        });
+      });
+    }
+  }catch(e){}
 }
-function save(){try{localStorage.setItem('bpv7',JSON.stringify(DATA));}catch(e){alert('Photo trop lourde — essaie une image plus petite.');}}
 
-function cap(s){const sk=['&','and','du','de','la','le','par'];return s.split(' ').map((w,i)=>i===0||!sk.includes(w.toLowerCase())?w[0].toUpperCase()+w.slice(1):w).join(' ');}
-function emp(v){return !v||v.trim()==='';}
+function saveData(){
+  try{localStorage.setItem('bp_data',JSON.stringify(DATA));}catch(e){}
+}
 
-function sp(s,hidden){
-  if(hidden) return '<span class="pill pill-hidden">👁 Masquée</span>';
+function cap(s){const skip=['&','and','du','de','la','le','par'];return s.split(' ').map((w,i)=>i===0||!skip.includes(w.toLowerCase())?w[0].toUpperCase()+w.slice(1):w).join(' ');}
+
+function sp(s){
   if(s==='tested') return '<span class="pill pill-tested">✓ Testée</span>';
   if(s==='wishlist') return '<span class="pill pill-wishlist">♡ Wishlist</span>';
   return '<span class="pill pill-todo">À compléter</span>';
 }
+function emp(v){return !v||v.trim()==='';}
 
-function buildCard(b, cat){
-  const siteHtml = b.site ? `<a href="https://www.${b.site}" target="_blank">${b.site}</a> · Vinted` : 'Instagram · site officiel · Vinted';
-  const avisHtml = emp(b.avis) ? '<div class="avis-text empty">À compléter par Morgane…</div>' : `<div class="avis-text">${b.avis}</div>`;
-  const lienHtml = emp(b.lien) ? 'lien à ajouter' : `<a href="${b.lien}" target="_blank">Voir le haul ▶</a>`;
-  const photoHtml = b.photo ? `<img class="card-photo" src="${b.photo}" alt="${b.name}">` : '';
-  const photoPlaceholder = `<div class="card-photo-placeholder" onclick="triggerPhoto('${b.name}','${cat}')">📷 Ajouter une photo</div>`;
-  const isWish = b.status === 'wishlist';
-  const photoDelBtn = b.photo ? `<button class="card-action-btn btn-photo-del" onclick="removePhoto('${b.name}','${cat}')">🗑 Photo</button>` : `<button class="card-action-btn btn-photo" onclick="triggerPhoto('${b.name}','${cat}')">📷 Photo</button>`;
-  const hideLabel = b.hidden ? '👁 Afficher' : '🙈 Masquer';
-
+function buildCard(b,cat){
+  const siteHtml=b.site?`<a href="https://www.${b.site}" target="_blank">${b.site}</a> · Vinted`:'Instagram · site officiel · Vinted';
+  const avisHtml=emp(b.avis)?'<div class="avis-text empty">À compléter par Morgane…</div>':`<div class="avis-text">${b.avis}</div>`;
+  const lienHtml=emp(b.lien)?'lien à ajouter':`<a href="${b.lien}" target="_blank">Voir le haul ▶</a>`;
   return `
-<div class="brand-card${b.hidden?' hidden-card':''}" data-status="${b.hidden?'hidden':b.status}" data-name="${b.name.toLowerCase()}" data-cat="${cat}" data-bname="${b.name}">
-  ${photoHtml}
-  ${photoPlaceholder}
-  <div class="brand-head">
-    <div class="brand-left" onclick="toggleCard(this)">
+<div class="brand-card" data-status="${b.status}" data-name="${b.name.toLowerCase()}" data-cat="${cat}" data-bname="${b.name}">
+  <div class="brand-head" onclick="toggleCard(this)">
+    <div class="brand-left">
       <div class="brand-name">${b.name}</div>
       <div class="brand-meta">
-        ${sp(b.status, b.hidden)}
+        ${sp(b.status)}
         ${!emp(b.type)?`<span class="pill pill-type">${b.type.split(',')[0].trim()}</span>`:''}
         ${!emp(b.prix)?`<span class="pill pill-price">${b.prix}</span>`:''}
         ${b.extra||''}
       </div>
     </div>
-    <div class="head-actions">
-      <button class="wish-btn${isWish?' active':''}" onclick="toggleWish('${b.name}','${cat}')" title="Wishlist">${isWish?'♥':'♡'}</button>
-      <span class="brand-chevron" onclick="toggleCardByName('${b.name}','${cat}')">▼</span>
-    </div>
+    <span class="brand-chevron">▼</span>
   </div>
-  <div class="card-edit-actions">
-    <button class="card-action-btn btn-edit" onclick="openEdit('${b.name}','${cat}')">✏️ Modifier</button>
-    ${photoDelBtn}
-    <button class="card-action-btn btn-hide" onclick="toggleHide('${b.name}','${cat}')">${hideLabel}</button>
-    <button class="card-action-btn btn-delete" onclick="askDelete('${b.name}','${cat}')">🗑 Supprimer</button>
-  </div>
+  <button class="edit-card-btn" onclick="openModal('${b.name}','${cat}')">✏️ Modifier cette fiche</button>
   <div class="brand-body">
     <div class="fields-grid">
       <div class="field"><div class="field-label">Type de vêtements</div><div class="field-value ${emp(b.type)?'empty':''}">${emp(b.type)?'À compléter':b.type}</div></div>
@@ -566,36 +513,27 @@ function buildCard(b, cat){
 }
 
 function renderAll(){
-  CATS.forEach(cat=>{
+  Object.keys(DATA).forEach(cat=>{
     const c=document.getElementById('brands-'+cat);
-    if(!c)return;
-    c.innerHTML=DATA[cat].map(b=>buildCard(b,cat)).join('');
-    const tc=document.getElementById('tc-'+cat);
-    if(tc)tc.textContent=DATA[cat].filter(b=>!b.hidden).length;
+    if(c){c.innerHTML=DATA[cat].map(b=>buildCard(b,cat)).join('');const tc=document.getElementById('tc-'+cat);if(tc)tc.textContent=DATA[cat].length;}
   });
 }
 
-// ── TABS ──
+// TABS
 const tabEls=document.querySelectorAll('.tab');
+const cats=['semi-luxe','indie-connue','indie-deco','mif','bijoux'];
 function setTab(id){
   document.querySelectorAll('.cat-view').forEach(v=>v.classList.remove('active'));
   tabEls.forEach(t=>t.classList.remove('active'));
   document.getElementById('cat-'+id).classList.add('active');
-  tabEls[CATS.indexOf(id)].classList.add('active');
+  tabEls[cats.indexOf(id)].classList.add('active');
   document.getElementById('searchInput').value='';
   Object.keys(af).forEach(k=>af[k]='tout');
   document.querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.filters').forEach(f=>{if(f.firstElementChild)f.firstElementChild.classList.add('active');});
 }
-
-function toggleCard(el){el.closest('.brand-card').classList.toggle('open');}
-function toggleCardByName(name,cat){
-  const card=document.querySelector(`[data-cat="${cat}"][data-bname="${CSS.escape(name)}"]`);
-  if(card)card.classList.toggle('open');
-}
-
-// ── FILTER ──
-const af={};CATS.forEach(c=>af[c]='tout');
+function toggleCard(h){h.closest('.brand-card').classList.toggle('open');}
+const af={};cats.forEach(c=>af[c]='tout');
 function setFilter(pill,cat,f){
   pill.closest('.filters').querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
   pill.classList.add('active');af[cat]=f;applyF(cat);
@@ -605,82 +543,27 @@ function applyF(cat){
   const q=document.getElementById('searchInput').value.toLowerCase();
   let v=0;
   document.querySelectorAll(`#brands-${cat} .brand-card`).forEach(c=>{
-    const matchF = f==='tout'||(f==='hidden'&&c.dataset.status==='hidden')||(f!=='hidden'&&c.dataset.status===f&&c.dataset.status!=='hidden');
-    const matchQ = !q||c.dataset.name.includes(q);
-    const show=matchF&&matchQ;
+    const show=(f==='tout'||c.dataset.status===f)&&(!q||c.dataset.name.includes(q));
     c.style.display=show?'':'none';if(show)v++;
   });
   const nr=document.getElementById('no-'+cat);if(nr)nr.classList.toggle('visible',v===0);
 }
 function handleSearch(q){applyF(document.querySelector('.cat-view.active').id.replace('cat-',''));}
 
-// ── EDIT MODE ──
-function toggleEdit(){
+// EDIT MODE
+function toggleEditMode(){
   document.body.classList.toggle('editing');
   const on=document.body.classList.contains('editing');
-  document.getElementById('tTrack').classList.toggle('on',on);
-  document.getElementById('tLabel').textContent=on?'Mode édition ✏️':'Mode lecture';
+  document.getElementById('toggleTrack').classList.toggle('on',on);
+  document.getElementById('toggleLabel').textContent=on?'Mode édition':'Mode lecture';
 }
 
-// ── WISHLIST TOGGLE ──
-function toggleWish(name,cat){
+// MODAL
+let currentBrand=null,currentCat=null;
+function openModal(name,cat){
   const b=DATA[cat].find(x=>x.name===name);if(!b)return;
-  b.status = b.status==='wishlist' ? 'todo' : 'wishlist';
-  save();renderAll();applyF(cat);
-}
-
-// ── HIDE/SHOW ──
-function toggleHide(name,cat){
-  const b=DATA[cat].find(x=>x.name===name);if(!b)return;
-  b.hidden=!b.hidden;save();renderAll();applyF(cat);
-}
-
-// ── DELETE ──
-let pendingDelete={};
-function askDelete(name,cat){
-  pendingDelete={name,cat};
-  document.getElementById('confEmoji').textContent='🗑️';
-  document.getElementById('confTitle').textContent='Supprimer '+name+' ?';
-  document.getElementById('confSub').textContent='La fiche sera définitivement supprimée. Tu peux aussi juste la masquer.';
-  document.getElementById('confOk').textContent='Supprimer';
-  document.getElementById('confOk').onclick=doDelete;
-  document.getElementById('confirmDlg').classList.add('open');
-}
-function doDelete(){
-  const {name,cat}=pendingDelete;
-  DATA[cat]=DATA[cat].filter(b=>b.name!==name);
-  save();renderAll();closeConfirm();
-}
-function closeConfirm(){document.getElementById('confirmDlg').classList.remove('open');}
-
-// ── PHOTO ──
-let photoTarget={};
-function triggerPhoto(name,cat){
-  photoTarget={name,cat};
-  document.getElementById('photoInput').click();
-}
-function handlePhotoUpload(e){
-  const file=e.target.files[0];if(!file)return;
-  if(file.size>2*1024*1024){alert('Image trop lourde (max 2Mo). Compresse-la avant.');e.target.value='';return;}
-  const reader=new FileReader();
-  reader.onload=ev=>{
-    const b=DATA[photoTarget.cat].find(x=>x.name===photoTarget.name);
-    if(b){b.photo=ev.target.result;save();renderAll();applyF(photoTarget.cat);}
-    e.target.value='';
-  };
-  reader.readAsDataURL(file);
-}
-function removePhoto(name,cat){
-  const b=DATA[cat].find(x=>x.name===name);
-  if(b){b.photo='';save();renderAll();applyF(cat);}
-}
-
-// ── EDIT MODAL ──
-let cur={};
-function openEdit(name,cat){
-  const b=DATA[cat].find(x=>x.name===name);if(!b)return;
-  cur={b,cat};
-  document.getElementById('mName').textContent=name;
+  currentBrand=b;currentCat=cat;
+  document.getElementById('modalBrandName').textContent=name;
   document.getElementById('fStatus').value=b.status;
   document.getElementById('fType').value=b.type||'';
   document.getElementById('fStyle').value=b.style||'';
@@ -691,38 +574,43 @@ function openEdit(name,cat){
   document.getElementById('fLien').value=b.lien||'';
   document.getElementById('editModal').classList.add('open');
 }
-function closeEdit(){document.getElementById('editModal').classList.remove('open');}
-function saveEdit(){
-  const b=cur.b;if(!b)return;
-  b.status=document.getElementById('fStatus').value;
-  b.type=document.getElementById('fType').value;
-  b.style=document.getElementById('fStyle').value;
-  b.prix=document.getElementById('fPrix').value;
-  b.tailles=document.getElementById('fTailles').value;
-  b.site=document.getElementById('fSite').value;
-  b.avis=document.getElementById('fAvis').value;
-  b.lien=document.getElementById('fLien').value;
-  save();renderAll();closeEdit();
+function closeModal(){document.getElementById('editModal').classList.remove('open');}
+function saveCard(){
+  if(!currentBrand)return;
+  currentBrand.status=document.getElementById('fStatus').value;
+  currentBrand.type=document.getElementById('fType').value;
+  currentBrand.style=document.getElementById('fStyle').value;
+  currentBrand.prix=document.getElementById('fPrix').value;
+  currentBrand.tailles=document.getElementById('fTailles').value;
+  currentBrand.site=document.getElementById('fSite').value;
+  currentBrand.avis=document.getElementById('fAvis').value;
+  currentBrand.lien=document.getElementById('fLien').value;
+  saveData();renderAll();closeModal();
+  // Re-open the card
   setTimeout(()=>{
-    const card=document.querySelector(`[data-bname="${cur.b.name}"]`);
+    const card=document.querySelector(`[data-bname="${currentBrand.name}"]`);
     if(card){card.classList.add('open');card.scrollIntoView({behavior:'smooth',block:'center'});}
   },100);
 }
 
-// ── ADD MODAL ──
-function openAdd(){document.getElementById('addModal').classList.add('open');}
-function closeAdd(){document.getElementById('addModal').classList.remove('open');}
-function doAdd(){
+// ADD MODAL
+function openAddModal(){document.getElementById('addModal').classList.add('open');}
+function closeAddModal(){document.getElementById('addModal').classList.remove('open');}
+function addBrand(){
   const name=document.getElementById('aNom').value.trim();
-  if(!name){alert('Donne un nom !');return;}
+  if(!name){alert('Donne un nom à la marque !');return;}
   const cat=document.getElementById('aCat').value;
-  DATA[cat].push({name,status:document.getElementById('aStatus').value,type:document.getElementById('aType').value,style:'',prix:document.getElementById('aPrix').value,tailles:'',site:'',avis:document.getElementById('aAvis').value,lien:'',photo:'',hidden:false,extra:''});
-  save();renderAll();closeAdd();setTab(cat);
-  ['aNom','aType','aPrix','aAvis'].forEach(id=>document.getElementById(id).value='');
+  const b={name,status:document.getElementById('aStatus').value,type:document.getElementById('aType').value,style:"",prix:document.getElementById('aPrix').value,tailles:"",site:"",avis:document.getElementById('aAvis').value,lien:"",extra:""};
+  DATA[cat].push(b);saveData();renderAll();closeAddModal();
+  setTab(cat);
+  document.getElementById('aNom').value='';
+  document.getElementById('aType').value='';
+  document.getElementById('aPrix').value='';
+  document.getElementById('aAvis').value='';
 }
 
-// ── INIT ──
-load();renderAll();
+// INIT
+loadSaved();renderAll();
 </script>
 </body>
 </html>
